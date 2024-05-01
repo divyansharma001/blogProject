@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 function Card() {
   const [blogs, setBlogs] = useState([]);
@@ -9,7 +10,7 @@ function Card() {
   useEffect(() => {
     const handleBlogs = async () => {
       try {
-        const response = await axios.post("http://localhost:3000/api/posts");
+        const response = await axios.get("http://localhost:3000/api/posts");
         if (response.status === 200) {
           setBlogs(response.data);
           console.log(response.data);
@@ -52,7 +53,7 @@ function Card() {
               <hr />
               <div>
                 <p className="p-1 text-base md:p-3">
-                  {blog.body}...<span className="text-[#283A9C]"><a>read more</a></span>
+                  {blog.body}...<span className="text-[#283A9C]"><Link to={`/posts/${blog.id}`} >read more</Link></span>
                 </p>
               </div>
               <div className="p-1 md:pl-3 flex gap-3 mb-8">

@@ -39,7 +39,7 @@ export default function Modal({ onClose }) {
     e.preventDefault();
     
     try {
-      // Send a POST request to your backend endpoint
+      
       const response = await axios.post('http://localhost:3000/api/allPosts', {
         title,
         content

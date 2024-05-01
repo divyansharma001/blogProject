@@ -51,7 +51,7 @@ function Sidebar() {
         </div>
         <div className=" font-extralight italic text-center">@james_andy</div>
         <div className=" flex justify-evenly text-center pr-10 pt-1">
-          <div className="w-[20px] text-wrap">
+          <div className="w-[30px] text-wrap">
             240 <span className=" font-extralight ">Followers</span>
           </div>
           <div className="w-[20px] text-wrap">

@@ -5,7 +5,7 @@ import db from "../db.js";
 const blogsRouter = Router();
 blogsRouter.use(express.json());
 
-blogsRouter.post("/posts", async(req, res)=>{
+blogsRouter.get("/posts", async(req, res)=>{
 
     try {
         const query = "SELECT * FROM blog_posts";
