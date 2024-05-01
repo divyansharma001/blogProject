@@ -2,27 +2,29 @@ import express from "express";
 import { Router } from "express";
 import db from "../db.js";
 
-const postsRouter = Router();
-postsRouter.use(express.json());
+const blogsRouter = Router();
+blogsRouter.use(express.json());
 
-postsRouter.post("/posts", async (req, res) => {
-  const { title, content } = req.body;
+blogsRouter.post("/posts", async(req, res)=>{
 
-  try {
-   
-    const result = await db.query("INSERT INTO blog_posts (title, body) VALUES (?, ?)", [
-      title,
-      content,
-    ]);
-
-    res.status(200).json({
-      message: "Post created successfully",
-      postId: result.insertId,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "An error occurred while creating the post" });
-  }
+    try {
+        const query = "SELECT * FROM blog_posts";
+        db.query(query, (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({ error: "An error occurred while fetching blog posts" });
+            } else {
+                console.log("Data sent to frontend is", result);
+                res.status(200).json(result);
+            }
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "An error occurred while fetching blog posts" });
+    }
 });
 
-export default postsRouter;
+
+
+
+export default blogsRouter

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 function Drawer() {
   const options = [
@@ -15,7 +16,7 @@ function Drawer() {
     {
       name: "Your Posts",
       icon: "./logo3.png",
-      to: "/",
+      to: "/posts",
     },
     {
       name: "Your Saved",
@@ -37,13 +38,13 @@ function Drawer() {
     <div className="drawer">
   <input id="my-drawer" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content">
-    {/* Page content here */}
+   
     <label htmlFor="my-drawer" className="btn btn-ghost drawer-button"><img src='./menu.png' /></label>
   </div> 
   <div className="drawer-side">
     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-      {/* Sidebar content here */}
+     
 
 
      <div className="">
@@ -68,7 +69,7 @@ function Drawer() {
         {options.map((option) => (
           <div className={`flex pl-12 gap-6 ${ option.name == "Dashboard" ? "pt-16" : "pt-7"}`} key={option.name}>
             <img className="h-[20px] w-[20px]" src={option.icon} />
-            <div className=" text-sm ">{option.name}</div>
+            <Link to={option.to} className=" text-sm ">{option.name}</Link>
           </div>
         ))}
         

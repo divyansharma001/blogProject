@@ -12,7 +12,7 @@ db.query(`select * from blog_posts`, function(err, result, fields) {
     if (err) {
         return console.log(err);
     }
-    return console.log(result);
+    return console.log("mySql is connected");
 })
 
 export default db;

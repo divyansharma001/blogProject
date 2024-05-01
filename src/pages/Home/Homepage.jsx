@@ -3,6 +3,7 @@ import { LuPenLine } from 'react-icons/lu';
 import Form from '../Form/Form';
 import { useState } from 'react';
 import Modal from '../Modals/Modal';
+import Card from '../../components/Card/Card';
 
 function Homepage() {
   const [formView, setFormView] = useState(false);
@@ -23,9 +24,11 @@ function Homepage() {
         </button>
         {formView && (
           <Modal onClose={() => setFormView(false)}>
-            <Form />
+            
           </Modal>
         )}
+
+      
       </div>
     </div>
   );

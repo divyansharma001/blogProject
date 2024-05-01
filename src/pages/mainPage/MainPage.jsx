@@ -2,6 +2,7 @@ import React from 'react'
 import Drawer from '../../components/Drawer/Drawer'
 import { LuPenLine } from "react-icons/lu";
 import Posts from '../posts/Posts';
+import Card from '../../components/Card/Card';
 
 function MainPage() {
   return (

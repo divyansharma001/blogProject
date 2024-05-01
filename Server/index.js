@@ -1,7 +1,8 @@
 import express from 'express';
 import db from './db.js';
-import postsRouter from './routes/posts.js';
+import postsRouter from './routes/allPosts.js';
 import cors from 'cors'
+import blogsRouter from './routes/posts.js';
 
 const app = express();
 const port = 3000;
@@ -12,6 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/api/", postsRouter);
+app.use("/api/", blogsRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

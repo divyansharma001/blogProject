@@ -40,19 +40,19 @@ export default function Modal({ onClose }) {
     
     try {
       // Send a POST request to your backend endpoint
-      const response = await axios.post('http://localhost:3000/api/posts', {
+      const response = await axios.post('http://localhost:3000/api/allPosts', {
         title,
         content
       });
   
-      // Handle the response if needed
+     
       console.log('Post successful:', response.data);
     } catch (error) {
-      // Handle errors here
+      
       console.error('Error posting data:', error);
     }
   
-    // Close the modal after submission attempt
+   
     if (onClose) {
       onClose();
     }
@@ -60,10 +60,10 @@ export default function Modal({ onClose }) {
 
   return ReactDOM.createPortal(
     <>
-      {/* Overlay */}
+    
       <div className="fixed inset-0 bg-black opacity-70 z-50" style={OVERLAY_STYLES} onClick={onClose} />
 
-      {/* Modal */}
+     
       <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-lg shadow-lg z-50" style={MODAL_STYLES}>
         <form onSubmit={handleSubmit} className="p-4">
           <div className="mb-4">
