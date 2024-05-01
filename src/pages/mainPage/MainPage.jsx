@@ -1,10 +1,11 @@
 import React from 'react'
 import Drawer from '../../components/Drawer/Drawer'
 import { LuPenLine } from "react-icons/lu";
+import Posts from '../posts/Posts';
 
 function MainPage() {
   return (
-   <div className={` bg-gray-100 w-full h-screen `}>
+   <div className={` bg-gray-100 w-full h-full `}>
   
   <div  className='lg:hidden block'>
   <div className='flex item-center'>
@@ -27,7 +28,7 @@ function MainPage() {
 
 {/* for larger screens */}
 
-<div className=' hidden lg:block'>
+<div className='hidden lg:block'>
     <div className='font-semibold pt-[46px] pl-[60px] text-xl'>YOUR POSTS</div>
     <div className='flex justify-center align-middle pt-8 bg-transparent'><img src='./Create.png'/></div>
     <div className='pl-[400px] pb-20'>
@@ -36,7 +37,9 @@ function MainPage() {
   START WRITING
 </button>
     </div>
+    
    </div>
+
 
    </div>
 

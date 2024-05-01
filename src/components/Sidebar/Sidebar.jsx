@@ -1,5 +1,6 @@
 import React from "react";
 import Drawer from "../Drawer/Drawer";
+import { Link } from "react-router-dom";
 
 
 
@@ -18,7 +19,7 @@ function Sidebar() {
     {
       name: "Your Posts",
       icon: "./logo3.png",
-      to: "/",
+      to: "/posts",
     },
     {
       name: "Your Saved",
@@ -62,7 +63,7 @@ function Sidebar() {
         {options.map((option) => (
           <div className={`flex pl-12 gap-6 ${ option.name == "Dashboard" ? "pt-16" : "pt-7"}`} key={option.name}>
             <img className="h-[20px] w-[20px]" src={option.icon} />
-            <div className=" text-sm ">{option.name}</div>
+            <Link to={option.to} className=" text-sm ">{option.name}</Link>
           </div>
         ))}
         
