@@ -4,6 +4,8 @@ import postsRouter from './routes/allPosts.js';
 import cors from 'cors'
 import blogsRouter from './routes/posts.js';
 import postById from './routes/postById.js';
+import deleteRouter from './routes/deleteRoute.js';
+
 
 const app = express();
 const port = 3000;
@@ -17,6 +19,9 @@ app.get('/', (req, res) => {
 app.use("/api/", postsRouter);
 app.use("/api/", blogsRouter);
 app.use('/api/', postById);
+app.use("/api/", deleteRouter)
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

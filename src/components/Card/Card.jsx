@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { AiFillEdit } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { Link, useParams} from 'react-router-dom';
 
 function Card() {
   const [blogs, setBlogs] = useState([]);
+
+ 
 
   useEffect(() => {
     const handleBlogs = async () => {
@@ -24,6 +26,16 @@ function Card() {
     handleBlogs();
   }, []);
 
+  const handleDelete = async (id) =>{
+    try {
+      const response = await axios.delete(`http://localhost:3000/api/posts/${id}`)
+      setBlogs(blogs.filter(blog => blog.id != id))
+      console.log(response);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div>
       {blogs.length > 0 ? (
@@ -34,10 +46,10 @@ function Card() {
                 <p className="p-1 font-bold md:p-3">{blog.title}</p>
                 <div className="p-1 flex md:p-3 gap-1">
                   <div>
-                    <a><AiFillEdit /></a>
+                    <button ><AiFillEdit /></button>
                   </div>
                   <div>
-                    <a><MdDelete /></a>
+                    <button onClick={() => handleDelete(blog.id)}><MdDelete /></button>
                   </div>
                 </div>
               </div>
