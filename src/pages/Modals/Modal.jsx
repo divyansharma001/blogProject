@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios'
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -23,9 +24,18 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-export default function Modal({ onClose }) {
+export default function Modal({ onClose, blog }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (blog) {
+      setTitle(blog.title);
+      setContent(blog.body); // Assuming 'body' is the field containing the blog post body content
+    }
+  }, [blog]);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -37,33 +47,36 @@ export default function Modal({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    try {
-      
-      const response = await axios.post('http://localhost:3000/api/allPosts', {
-        title,
-        content
-      });
   
-     
-      console.log('Post successful:', response.data);
+    try {
+      if (blog) {
+       
+        const result = await axios.put(`http://localhost:3000/api/posts/${id}`, {
+          title: title,
+          body: content 
+        });
+        console.log("Post edited successfully");
+      } else {
+        
+        const response = await axios.post('http://localhost:3000/api/allPosts', {
+          title,
+          content
+        });
+        console.log('Post successful:', response.data);
+      }
     } catch (error) {
-      
-      console.error('Error posting data:', error);
+      console.error('Error:', error);
     }
   
-   
     if (onClose) {
       onClose();
     }
   };
+  
 
   return ReactDOM.createPortal(
     <>
-    
       <div className="fixed inset-0 bg-black opacity-70 z-50" style={OVERLAY_STYLES} onClick={onClose} />
-
-     
       <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-lg shadow-lg z-50" style={MODAL_STYLES}>
         <form onSubmit={handleSubmit} className="p-4">
           <div className="mb-4">

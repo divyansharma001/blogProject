@@ -25,6 +25,7 @@ function Card() {
     };
     handleBlogs();
   }, []);
+  
 
   const handleDelete = async (id) =>{
     try {
@@ -35,6 +36,7 @@ function Card() {
       console.error(error)
     }
   }
+  
 
   return (
     <div>

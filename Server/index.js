@@ -5,6 +5,7 @@ import cors from 'cors'
 import blogsRouter from './routes/posts.js';
 import postById from './routes/postById.js';
 import deleteRouter from './routes/deleteRoute.js';
+import editRouter from './routes/editRouter.js';
 
 
 const app = express();
@@ -19,7 +20,8 @@ app.get('/', (req, res) => {
 app.use("/api/", postsRouter);
 app.use("/api/", blogsRouter);
 app.use('/api/', postById);
-app.use("/api/", deleteRouter)
+app.use("/api/", deleteRouter);
+app.use("/api/", editRouter)
 
 
 
