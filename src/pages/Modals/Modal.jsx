@@ -27,37 +27,44 @@ const OVERLAY_STYLES = {
 export default function Modal({ onClose, blog }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [titleError, setTitleError] = useState(null);
+  const [contentError, setContentError] = useState(null);
 
   const { id } = useParams();
 
   useEffect(() => {
     if (blog) {
       setTitle(blog.title);
-      setContent(blog.body); // Assuming 'body' is the field containing the blog post body content
+      setContent(blog.body);
     }
   }, [blog]);
 
   const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+    const newTitle = e.target.value.slice(0, 51); // Limit title to 50 characters
+    setTitle(newTitle);
+    setTitleError(newTitle.length > 50 ? 'Title cannot exceed 50 characters' : null);
   };
 
   const handleContentChange = (e) => {
-    setContent(e.target.value);
+    setContent(e.target.value.slice(0, 5001)); // Limit content to 5000 characters
+    setContentError(e.target.value.length > 5000 ? 'Content cannot exceed 5000 characters' : null);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
+    if (titleError || contentError) {
+      return; // Prevent submission if there are errors
+    }
+
     try {
       if (blog) {
-       
         const result = await axios.put(`http://localhost:3000/api/posts/${id}`, {
-          title: title,
-          body: content 
+          title,
+          body: content
         });
         console.log("Post edited successfully");
       } else {
-        
         const response = await axios.post('http://localhost:3000/api/allPosts', {
           title,
           content
@@ -67,12 +74,11 @@ export default function Modal({ onClose, blog }) {
     } catch (error) {
       console.error('Error:', error);
     }
-  
+
     if (onClose) {
       onClose();
     }
   };
-  
 
   return ReactDOM.createPortal(
     <>
@@ -87,8 +93,10 @@ export default function Modal({ onClose, blog }) {
               value={title}
               onChange={handleTitleChange}
               placeholder="Write Title"
-              className="w-full p-2 rounded bg-[#D9D9D9] text-black placeholder-gray-800"
+              className={`w-full p-2 rounded bg-[#D9D9D9] text-black placeholder-gray-800 ${titleError ? 'border border-red-500' : ''}`}
+              maxLength={50} // Added maxLength attribute for better user experience
             />
+            {titleError && <p className="text-red-500 text-xs">{titleError}</p>}
           </div>
           <div className="mb-4">
             <label htmlFor="content" className="block text-black mb-2">Content:</label>
@@ -97,9 +105,11 @@ export default function Modal({ onClose, blog }) {
               value={content}
               onChange={handleContentChange}
               placeholder="What’s on your mind!!!!!"
-              className="w-full h-96 p-2 rounded bg-[#D9D9D9] text-black"
+              className={`w-full h-96 p-2 rounded bg-[#D9D9D9] text-black ${contentError ? 'border border-red-500' : ''}`}
               rows="6"
-            ></textarea>
+              maxLength={5000} 
+            />
+            {contentError && <p className="text-red-500 text-xs">{contentError}</p>}
           </div>
           <div className="flex justify-end">
             <button
@@ -111,8 +121,9 @@ export default function Modal({ onClose, blog }) {
             <button
               type="submit"
               className="bg-black hover:bg-gray-600 p-2 text-white font-bold rounded pl-10 pr-10 py-1 px-1 "
+              disabled={titleError || contentError} 
             >
-              Publish
+              {id ? 'Update' : "Publish"}
             </button>
           </div>
         </form>

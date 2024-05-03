@@ -13,7 +13,7 @@ function Homepage() {
   };
 
   return (
-    <div className='hidden lg:block bg-gray-100'>
+    <div className='hidden xl:block bg-gray-100'>
       <div className='flex justify-center align-middle pt-8 bg-transparent'>
         <img src='./Create.png' alt="Create"/>
       </div>

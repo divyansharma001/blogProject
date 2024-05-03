@@ -1,11 +1,9 @@
 import React from 'react'
-import Navbar from '../../components/Navbar/Navbar'
-import { LuPenLine } from "react-icons/lu";
 import Card from '../../components/Card/Card';
 
 function Posts() {
   return (
-    <div className='bg-gray-100 h-full' >
+    <div className='bg-gray-100 h-full w-full' >
     <Card/>
     
    </div>

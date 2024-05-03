@@ -8,7 +8,7 @@ function MainPage() {
   return (
    <div className={` bg-gray-100 w-full h-full `}>
   
-  <div  className='lg:hidden block'>
+  <div  className='xl:hidden block'>
   <div className='flex item-center'>
   <div className="mr-4">
     <Drawer/>
@@ -29,7 +29,7 @@ function MainPage() {
 
 {/* for larger screens */}
 
-<div className='hidden lg:block'>
+<div className='hidden xl:block'>
     <div className='font-semibold pt-[46px] pl-[60px] text-xl'>YOUR POSTS</div>
     <div className='flex justify-center align-middle pt-8 bg-transparent'><img src='./Create.png'/></div>
     <div className='pl-[400px] pb-20'>
@@ -43,11 +43,6 @@ function MainPage() {
 
 
    </div>
-
-
-
-
-
 
 
   )

@@ -1,6 +1,7 @@
 import React from "react";
 import Drawer from "../Drawer/Drawer";
 import { Link } from "react-router-dom";
+import { VscPieChart } from "react-icons/vsc";
 
 
 
@@ -41,7 +42,7 @@ function Sidebar() {
     <>
       
 
-      <div className="hidden md:block ">
+      <div className="hidden xl:block ">
         <div className="pt-[30px] px-[85px]">
           <img src="./user.png" className="w-[100px] h-[80px] " alt="User" />
         </div>
