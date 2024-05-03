@@ -3,8 +3,25 @@ Project Name: Blog_App
 **Description**
 
 This Node.js application lays the groundwork for building a robust RESTful API using Express.js. It facilitates the management of posts in a database with CRUD (Create, Read, Update, Delete) operations.
+![Screenshot 2024-05-03 114415](https://github.com/divyansharma001/blogProject/assets/140371139/477fdb7b-f2f5-4e17-83a4-e735535ed29b)
 
-**Installation**
+![Screenshot 2024-05-03 115123](https://github.com/divyansharma001/blogProject/assets/140371139/627d683d-6071-4098-8061-25b5dd174f54)
+
+
+![Screenshot 2024-05-03 115118](https://github.com/divyansharma001/blogProject/assets/140371139/0c904107-3609-46eb-90ae-a0b11abee163)
+
+**Installation**![Screenshot 2024-05-03 115110](https://github.com/divyansharma001/blogProject/assets/140371139/ff09a821-61b5-43b1-a74c-086128b10db0)
+
+![Screenshot 2024-05-03 115128](https://github.com/divyansharma001/blogProject/assets/140371139/1214afca-0c15-4c81-b7b9-2781721e6902)
+
+![image](https://github.com/divyansharma001/blogProject/assets/140371139/7478f334-df51-4cbe-9c1e-c185ef0d0e96)
+
+
+![Screenshot 2024-05-03 120921](https://github.com/divyansharma001/blogProject/assets/140371139/c931cf1d-7144-4d77-80f4-33979f68c493)
+
+
+![Screenshot 2024-05-03 120917](https://github.com/divyansharma001/blogProject/assets/140371139/bfd77e0a-0c76-4830-bafb-ce5e766ccbd8)
+
 
 **Prerequisites:** Ensure you have Node.js and npm (or yarn) installed on your system. You can download them from the official Node.js website: [Node.js Official Website](https://nodejs.org/en)
 
