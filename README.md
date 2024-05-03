@@ -11,7 +11,7 @@ This Node.js application lays the groundwork for building a robust RESTful API u
 **Clone the repository:** If you've obtained the code through a version control system like Git, clone the repository using:
 
 ```bash
-git clone https://your-repository-url.git
+git clone https://github.com/divyansharma001/blogProject.git
 ```
 
 Use code with caution.
