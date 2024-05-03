@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import {toast,Toaster} from "react-hot-toast"
+
+const notify = () => toast.success('Post Created Successfully!');
+
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -25,6 +29,7 @@ const OVERLAY_STYLES = {
 };
 
 export default function Modal({ onClose, blog }) {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [titleError, setTitleError] = useState(null);
@@ -70,6 +75,7 @@ export default function Modal({ onClose, blog }) {
           content
         });
         console.log('Post successful:', response.data);
+        navigate('/posts')
       }
     } catch (error) {
       console.error('Error:', error);
@@ -121,9 +127,11 @@ export default function Modal({ onClose, blog }) {
             <button
               type="submit"
               className="bg-black hover:bg-gray-600 p-2 text-white font-bold rounded pl-10 pr-10 py-1 px-1 "
-              disabled={titleError || contentError} 
+              disabled={titleError || contentError}
+              onClick={notify} 
             >
               {id ? 'Update' : "Publish"}
+              <Toaster />
             </button>
           </div>
         </form>
