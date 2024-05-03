@@ -3,6 +3,15 @@ Project Name: Blog_App
 **Description**
 
 This Node.js application lays the groundwork for building a robust RESTful API using Express.js. It facilitates the management of posts in a database with CRUD (Create, Read, Update, Delete) operations.
+
+
+
+
+
+https://github.com/divyansharma001/blogProject/assets/140371139/a00c7b5a-2299-4af5-945e-aabb540afa86
+
+
+
 ![Screenshot 2024-05-03 114415](https://github.com/divyansharma001/blogProject/assets/140371139/477fdb7b-f2f5-4e17-83a4-e735535ed29b)
 
 ![Screenshot 2024-05-03 115123](https://github.com/divyansharma001/blogProject/assets/140371139/627d683d-6071-4098-8061-25b5dd174f54)
