@@ -1,117 +1,81 @@
 import React from "react";
 import Drawer from "../Drawer/Drawer";
 import { Link } from "react-router-dom";
-import { AiOutlinePieChart } from "react-icons/ai";
-import { CiSquarePlus } from "react-icons/ci";
-import { IoReaderOutline } from "react-icons/io5";
-import { HiOutlineTicket } from "react-icons/hi";
-import { FaRegUser } from "react-icons/fa";
-import { IoSettingsOutline } from "react-icons/io5";
-import { FiLogOut } from "react-icons/fi";
+import { VscPieChart } from "react-icons/vsc";
+
+
 
 function Sidebar() {
   const options = [
     {
       name: "Dashboard",
-      icon: (
-        <div className="text-xl">
-          <AiOutlinePieChart />
-        </div>
-      ),
+      icon: "./logo1.png",
       to: "/",
     },
     {
-      name: "Add new Feeds",
-      icon: (
-        <div className="text-xl">
-          <CiSquarePlus />
-        </div>
-      ),
+      name: "Add new Post",
+      icon: "./logo2.png",
       to: "/",
     },
     {
-      name: "Your Feeds",
-      icon: (
-        <div className="text-xl">
-          <IoReaderOutline />
-        </div>
-      ),
+      name: "Your Posts",
+      icon: "./logo3.png",
       to: "/posts",
     },
     {
       name: "Your Saved",
-      icon: (
-        <div className="text-xl">
-          <HiOutlineTicket />
-        </div>
-      ),
+      icon: "./logo4.png",
       to: "/",
     },
     {
       name: "Profile",
-      icon: (
-        <div className="text-xl">
-          <FaRegUser />
-        </div>
-      ),
+      icon: "./logo5.png",
       to: "/",
     },
     {
       name: "Settings",
-      icon: (
-        <div className="text-xl">
-          <IoSettingsOutline />
-        </div>
-      ),
+      icon: "./logo6.png",
       to: "/",
     },
   ];
   return (
     <>
-      <div className="hidden sm:block ">
+      
+
+      <div className="hidden xl:block ">
         <div className="pt-[30px] px-[85px]">
-          <img
-            src="./user.png"
-            className="w-full max-w-[100px] h-auto "
-            alt="User"
-          />
+          <img src="./user.png" className="w-[100px] h-[80px] " alt="User" />
         </div>
 
-        <div className="text-[24px] md:text-[28px] font-montserrat text-center">
+        <div className="text-[24px] font-montserrat text-center">
           James Anderson
         </div>
-        <div className="font-extralight italic text-center">@james_andy</div>
-        <div className="flex justify-evenly text-center pr-10 pt-1">
-          <div className="w-[15%] md:w-[20%] text-wrap">
-            240 <span className="font-extralight">Followers</span>
+        <div className=" font-extralight italic text-center">@james_andy</div>
+        <div className=" flex justify-evenly text-center pr-10 pt-1">
+          <div className="w-[30px] text-wrap">
+            240 <span className=" font-extralight ">Followers</span>
           </div>
-          <div className="w-[10%] md:w-[15%] text-wrap">
-            14 <span className="font-extralight">Following</span>
+          <div className="w-[20px] text-wrap">
+            14 <span className=" font-extralight ">Following</span>
           </div>
         </div>
+  
 
         {options.map((option) => (
-          <div
-            className={`flex pl-12 gap-6 ${
-              option.name === "Dashboard" ? "pt-16" : "pt-7"
-            }`}
-            key={option.name}
-          >
-            {option.icon}
-            <Link to={option.to} className="text-sm">
-              {option.name}
-            </Link>
+          <div className={`flex pl-12 gap-6 ${ option.name == "Dashboard" ? "pt-16" : "pt-7"}`} key={option.name}>
+            <img className="h-[20px] w-[20px]" src={option.icon} />
+            <Link to={option.to} className=" text-sm ">{option.name}</Link>
           </div>
         ))}
-
-        <div className="flex pl-12 gap-4 pt-24">
-          <FiLogOut />
+        
+        <div className=" flex pl-12 gap-4 pt-24">
+          <img src="./logout.png"/>
           <button className="">Log Out</button>
         </div>
+
       </div>
     </>
   );
 }
 
 export default Sidebar;
-
